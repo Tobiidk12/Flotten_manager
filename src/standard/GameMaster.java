@@ -5,6 +5,8 @@ import Raumschiffe.Jaeger;
 import Raumschiffe.Kreuzer;
 import Raumschiffe.Raumschiff;
 import Raumschiffe.Schlachtschiff;
+import UI.Test;
+import javafx.stage.Stage;
 import utilities.OtherUtilities;
 import utilities.Printer;
 
@@ -23,8 +25,7 @@ private static Gegner gegner = new Gegner();
      * @param args the input arguments
      */
     public static void main(String[] args) {
-
-
+        UI.Test.main(args);
     Printer.print("Welcome to the Game Master!");
     Printer.print("Enter name:");
     String name = scanner.nextLine();
