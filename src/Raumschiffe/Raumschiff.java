@@ -80,6 +80,7 @@ public abstract class Raumschiff implements ÜberwachungsObjekte {
 
 }
 
+
     /**
      * Schaden.
      *
@@ -94,6 +95,8 @@ public abstract class Raumschiff implements ÜberwachungsObjekte {
     }
 
 }
+
+
 
 
     /**
@@ -128,7 +131,33 @@ public void werdeAngegriffen(Raumschiff ziel){
 
 }
 
+// Getter Methoden
 
 
+    public String getName() {
+        return name;
+    }
 
+    public int getShieldPower() {
+        return ShieldPower;
+    }
+
+    public int getOShieldPower() {
+        return oShieldPower;
+    }
+
+    public int getAttackPower() {
+        return attackPower;
+    }
+
+    public int getPrice() {
+        return price;
+    }
 }
+
+
+
+
+
+
+
