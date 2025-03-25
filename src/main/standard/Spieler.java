@@ -1,4 +1,4 @@
-package standard;
+package main.standard;
 
 /**
  * The type Spieler.

@@ -1,8 +1,8 @@
-package RaumschiffService;
+package main.RaumschiffService;
 
-import Raumschiffe.Raumschiff;
-import standard.Spieler;
-import utilities.Printer;
+import main.Raumschiffe.Raumschiff;
+import main.standard.Spieler;
+import main.utilities.Printer;
 
 import java.util.Scanner;
 import java.util.Vector;
@@ -122,7 +122,7 @@ public class RWorkshop {
      */
 //hauptWartung wird von den unterklassen spezifiziert.
     protected  void hauptWartung(Raumschiff schiff){
-        System.out.println("Wartung für Raumschiffe: " + schiff.name + " Waffen und Schilde");
+        System.out.println("Wartung für main.Raumschiffe: " + schiff.name + " Waffen und Schilde");
         schiff.reparieren();
     }
 

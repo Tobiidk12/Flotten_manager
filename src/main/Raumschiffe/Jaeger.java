@@ -1,4 +1,4 @@
-package Raumschiffe;
+package main.Raumschiffe;
 
 
 /**

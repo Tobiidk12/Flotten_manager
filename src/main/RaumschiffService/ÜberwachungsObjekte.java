@@ -1,6 +1,6 @@
-package RaumschiffService;
+package main.RaumschiffService;
 
-import Raumschiffe.Raumschiff;
+import main.Raumschiffe.Raumschiff;
 
 /**
  * The type Überwachungs objekte.

@@ -1,14 +1,13 @@
-package standard;
+package main.standard;
 
-import RaumschiffService.RWorkshop;
-import Raumschiffe.Jaeger;
-import Raumschiffe.Kreuzer;
-import Raumschiffe.Raumschiff;
-import Raumschiffe.Schlachtschiff;
-import UI.Main;
-import UI.Test;
-import utilities.OtherUtilities;
-import utilities.Printer;
+import main.RaumschiffService.RWorkshop;
+import main.Raumschiffe.Jaeger;
+import main.Raumschiffe.Kreuzer;
+import main.Raumschiffe.Raumschiff;
+import main.Raumschiffe.Schlachtschiff;
+import main.UI.Main;
+import main.utilities.OtherUtilities;
+import main.utilities.Printer;
 
 import java.util.Scanner;
 
@@ -45,6 +44,7 @@ public class GameMaster {
      * Buy ship.
      */
     public static void buyShip() {
+
         Printer.print("Enter 1 to buy a Jaeger");
         Printer.print("| Schildstaerke: 250| Angriffskraft: 1000| Preis: 150 |");
         Printer.print("Enter 2 to buy a Kreuzer");
@@ -83,8 +83,7 @@ public class GameMaster {
     /**
      * Remove ship.
      */
-    public static void removeShip() {
-        int choice = OtherUtilities.chooseShip(Flotte.getInstance(), "remove");
+    public static void removeShip(int choice) {
         if (choice == -2 || choice == -1) {
             return;
         }
@@ -96,8 +95,8 @@ public class GameMaster {
     /**
      * Repair ship.
      */
-    public static void checkup() {
-        int choice = OtherUtilities.chooseShip(Flotte.getInstance(), "Repair");
+    public static void checkup(int choice) {
+        //int choice = OtherUtilities.chooseShip(Flotte.getInstance(), "Repair");
         if (choice == -2 || choice == -1) {
             return;
         }
@@ -132,13 +131,15 @@ public class GameMaster {
                     buyShip();
                     break;
                 case 2:
-                    removeShip();
+                    int choice2 = OtherUtilities.chooseShip(Flotte.getInstance(), "remove");
+                    removeShip(choice2);
                     break;
                 case 3:
                     Flotte.getInstance().showFlotte();
                     break;
                 case 4:
-                    checkup();
+                    int choice4 = OtherUtilities.chooseShip(Flotte.getInstance(), "Repair");
+                    checkup(choice4);
                     break;
                 case 5:
                     modify();

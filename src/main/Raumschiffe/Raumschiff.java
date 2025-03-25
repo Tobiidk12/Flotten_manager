@@ -1,8 +1,8 @@
-package Raumschiffe;
+package main.Raumschiffe;
 
-import RaumschiffService.AlarmZentrale;
-import RaumschiffService.ÜberwachungsObjekte;
-import utilities.Printer;
+import main.RaumschiffService.AlarmZentrale;
+import main.RaumschiffService.ÜberwachungsObjekte;
+import main.utilities.Printer;
 
 /**
  * The type Raumschiff.

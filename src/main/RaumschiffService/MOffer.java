@@ -1,6 +1,4 @@
-package RaumschiffService;
-
-import utilities.Printer;
+package main.RaumschiffService;
 
 /**
  * The type M offer.

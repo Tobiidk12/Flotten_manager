@@ -1,6 +1,6 @@
-package standard;
+package main.standard;
 
-import Raumschiffe.Raumschiff;
+import main.Raumschiffe.Raumschiff;
 
 import java.util.Vector;
 

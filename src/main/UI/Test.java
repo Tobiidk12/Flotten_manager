@@ -1,4 +1,4 @@
-package UI;
+package main.UI;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import standard.GameMaster;
 
 public class Test extends Application {
     @Override
@@ -18,7 +17,7 @@ public class Test extends Application {
         Scene scene = new Scene(hbox, 300, 200);
 
         stage.setScene(scene);
-        stage.setTitle("JavaFX UI.Test");
+        stage.setTitle("JavaFX main.UI.Test");
         stage.show();
         button.setOnAction(event -> stage.close());
 

@@ -1,9 +1,9 @@
-package standard;
+package main.standard;
 
-import Raumschiffe.Jaeger;
-import Raumschiffe.Raumschiff;
-import Raumschiffe.Schlachtschiff;
-import utilities.Printer;
+import main.Raumschiffe.Jaeger;
+import main.Raumschiffe.Raumschiff;
+import main.Raumschiffe.Schlachtschiff;
+import main.utilities.Printer;
 
 /**
  * The type Main.

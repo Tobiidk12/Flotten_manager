@@ -1,8 +1,8 @@
-package standard;
+package main.standard;
 
-import Raumschiffe.Jaeger;
-import Raumschiffe.Raumschiff;
-import utilities.Printer;
+import main.Raumschiffe.Jaeger;
+import main.Raumschiffe.Raumschiff;
+import main.utilities.Printer;
 
 import java.util.Random;
 import java.util.Vector;
@@ -56,7 +56,7 @@ public class Gegner implements FlottenFunktionen{
     }
     public void showFlotte(){
         Printer.printSeperator();
-            Printer.print("Aktuelle standard.Flotte:");
+            Printer.print("Aktuelle main.standard.Flotte:");
             for (int i = 1; i < gegnerSchiffe.size() + 1; i++) {
                 Printer.print(i + ". " + gegnerSchiffe.get(i - 1).toString());
             }

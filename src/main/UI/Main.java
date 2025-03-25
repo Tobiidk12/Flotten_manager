@@ -1,8 +1,10 @@
-package UI;
+package main.UI;
 
-import Raumschiffe.Jaeger;
-import Raumschiffe.Kreuzer;
-import Raumschiffe.Schlachtschiff;
+import javafx.scene.control.cell.PropertyValueFactory;
+import main.Raumschiffe.Jaeger;
+import main.Raumschiffe.Kreuzer;
+import main.Raumschiffe.Raumschiff;
+import main.Raumschiffe.Schlachtschiff;
 import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -15,10 +17,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import standard.Flotte;
-import standard.Spieler;
-import utilities.Printer;
-import utilities.UI_Utilities;
+import main.standard.Flotte;
+import main.standard.GameMaster;
+import main.standard.Spieler;
+import main.utilities.Printer;
+import main.utilities.UI_Utilities;
 
 
 public class Main extends Application {
@@ -103,16 +106,16 @@ public class Main extends Application {
                     //buyShip();
                     break;
                 case 2:
-                    coming_soon_window(stage);
-                    // removeShip();
+                    //coming_soon_window(stage);
+                    removeShip(stage);
                     break;
                 case 3:
                     UI_Utilities.showShips(stage,Flotte.getInstance().getSchiffe());
                     //Flotte.getInstance().showFlotte();
                     break;
                 case 4:
-                    coming_soon_window(stage);
-                    // checkup();
+                   // coming_soon_window(stage);
+                     checkup(stage);
                     break;
                 case 5:
                     coming_soon_window(stage);
@@ -251,15 +254,125 @@ public class Main extends Application {
 
         });
 
+    }
 
 
+    public static void removeShip(Stage stage) {
+
+        BorderPane borderPane = new BorderPane();
+        Scene scene = new Scene(borderPane, 800, 350);
+
+        Button menuButton = new Button("Back to Menu");
+
+        // Erstellung einer TableView mit Raumschiff als Typ, weil TableView ein generic hat.
+        TableView<Raumschiff> tableView = new TableView<Raumschiff>();
+        //Definieren der Ersten spalte, der erste Generic input ist der Datentype des input objekts, der Zweite Generic input ist der anzuzeigende datentyp.
+        TableColumn<Raumschiff, String> NameC = new TableColumn<Raumschiff, String>("Name");
+        TableColumn<Raumschiff, Integer> shieldPowerC = new TableColumn<Raumschiff, Integer>("ShieldPower");
+        TableColumn<Raumschiff, Integer> oShieldPowerC = new TableColumn<Raumschiff, Integer>("Max ShieldPower");
+        TableColumn<Raumschiff, Integer> attackPowerC = new TableColumn<Raumschiff, Integer>("AttackPower");
+        TableColumn<Raumschiff, Integer> priceC = new TableColumn<Raumschiff, Integer>("Price");
+
+        //Implementieren der Ersten spalte bzw füllen. dafür wird eine get Methode verwendet. vom Input der PropertyValueFactory wird ein methoden aufruf gemacht.
+        // Bei dem Methodenaufruf wird der Inhalt des strings verwendet von dem der erste buchstabe groß gemacht wird und dann get davor geschrieben wird.
+        // in diesem Fall wird getName aufgerufen.
+        // Wichtig!!! die Getter Methoden müssen definiert werden
+        NameC.setCellValueFactory(new PropertyValueFactory<>("name"));
+        shieldPowerC.setCellValueFactory(new PropertyValueFactory<>("shieldPower"));
+        oShieldPowerC.setCellValueFactory(new PropertyValueFactory<>("oShieldPower"));
+        attackPowerC.setCellValueFactory(new PropertyValueFactory<>("attackPower"));
+        priceC.setCellValueFactory(new PropertyValueFactory<>("price"));
 
 
+        //Spalten werden zur Tabelle hinzugefügt.
+        tableView.getColumns().add(NameC);
+        tableView.getColumns().add(shieldPowerC);
+        tableView.getColumns().add(oShieldPowerC);
+        tableView.getColumns().add(attackPowerC);
+        tableView.getColumns().add(priceC);
+
+// Es werden nur so viele spalten angezeigt wie hinzugefügt werden, normalerweise wir immer eine leere angezeigt.
+        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        // Style tableView
+        tableView.setStyle("-fx-font-size: 24px; " +
+                "-fx-text-fill: #000000; ");
+
+        //Add Data to tableView
+        tableView.getItems().addAll(Flotte.getInstance().getSchiffe());
+        borderPane.setTop(menuButton);
+        borderPane.setCenter(tableView);
+        stage.setScene(scene);
 
 
+        menuButton.setOnAction(e -> main.UI.Main.menuWindow(stage));
+
+        tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            int index = tableView.getSelectionModel().getSelectedIndex();
+            GameMaster.removeShip(index);
+            main.UI.Main.menuWindow(stage);
+
+        });
+
+    }
 
 
+    public static void checkup(Stage stage) {
 
+        BorderPane borderPane = new BorderPane();
+        Scene scene = new Scene(borderPane, 800, 350);
+
+        Button menuButton = new Button("Back to Menu");
+
+        // Erstellung einer TableView mit Raumschiff als Typ, weil TableView ein generic hat.
+        TableView<Raumschiff> tableView = new TableView<Raumschiff>();
+        //Definieren der Ersten spalte, der erste Generic input ist der Datentype des input objekts, der Zweite Generic input ist der anzuzeigende datentyp.
+        TableColumn<Raumschiff, String> NameC = new TableColumn<Raumschiff, String>("Name");
+        TableColumn<Raumschiff, Integer> shieldPowerC = new TableColumn<Raumschiff, Integer>("ShieldPower");
+        TableColumn<Raumschiff, Integer> oShieldPowerC = new TableColumn<Raumschiff, Integer>("Max ShieldPower");
+        TableColumn<Raumschiff, Integer> attackPowerC = new TableColumn<Raumschiff, Integer>("AttackPower");
+        TableColumn<Raumschiff, Integer> priceC = new TableColumn<Raumschiff, Integer>("Price");
+
+        //Implementieren der Ersten spalte bzw füllen. dafür wird eine get Methode verwendet. vom Input der PropertyValueFactory wird ein methoden aufruf gemacht.
+        // Bei dem Methodenaufruf wird der Inhalt des strings verwendet von dem der erste buchstabe groß gemacht wird und dann get davor geschrieben wird.
+        // in diesem Fall wird getName aufgerufen.
+        // Wichtig!!! die Getter Methoden müssen definiert werden
+        NameC.setCellValueFactory(new PropertyValueFactory<>("name"));
+        shieldPowerC.setCellValueFactory(new PropertyValueFactory<>("shieldPower"));
+        oShieldPowerC.setCellValueFactory(new PropertyValueFactory<>("oShieldPower"));
+        attackPowerC.setCellValueFactory(new PropertyValueFactory<>("attackPower"));
+        priceC.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+
+        //Spalten werden zur Tabelle hinzugefügt.
+        tableView.getColumns().add(NameC);
+        tableView.getColumns().add(shieldPowerC);
+        tableView.getColumns().add(oShieldPowerC);
+        tableView.getColumns().add(attackPowerC);
+        tableView.getColumns().add(priceC);
+
+// Es werden nur so viele spalten angezeigt wie hinzugefügt werden, normalerweise wir immer eine leere angezeigt.
+        tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        // Style tableView
+        tableView.setStyle("-fx-font-size: 24px; " +
+                "-fx-text-fill: #000000; ");
+
+        //Add Data to tableView
+        tableView.getItems().addAll(Flotte.getInstance().getSchiffe());
+        borderPane.setTop(menuButton);
+        borderPane.setCenter(tableView);
+        stage.setScene(scene);
+
+
+        menuButton.setOnAction(e -> main.UI.Main.menuWindow(stage));
+
+        tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            int index = tableView.getSelectionModel().getSelectedIndex();
+            GameMaster.checkup(index);
+            main.UI.Main.menuWindow(stage);
+
+        });
 
     }
 

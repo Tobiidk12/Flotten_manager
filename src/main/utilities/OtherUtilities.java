@@ -1,9 +1,9 @@
-package utilities;
+package main.utilities;
 import java.util.Scanner;
-import standard.FlottenFunktionen;
+import main.standard.FlottenFunktionen;
 
 /**
- * The type Other utilities.
+ * The type Other main.utilities.
  */
 public class OtherUtilities {
 
@@ -14,7 +14,7 @@ public class OtherUtilities {
      * @param Aufgabe       the aufgabe
      * @return the int
      */
-// -1 wird ausgegeben wenn die standard.Flotte des FlottenObjekts leer ist.
+// -1 wird ausgegeben wenn die main.standard.Flotte des FlottenObjekts leer ist.
     // -2 wird ausgegeben um zu verlassen.
     public static int chooseShip(FlottenFunktionen FlottenObjekt, String Aufgabe){
         Scanner scanner = new Scanner(System.in);
